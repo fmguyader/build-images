@@ -5,11 +5,11 @@
   - name: install docker  
     apt:
       name:
-        - docker  
+        - docker-py  
       update_cache: yes
   - name: demarrage docker
     service:
-      name: docker
+      name: docker-py
       state: started 
       enabled: yes
 
