@@ -2,20 +2,20 @@
 - hosts: all 
   become: true 
   tasks:
-  - name: install docker  
-    apt:
-      name:
-        - docker  
-      update_cache: yes
-  - name: index copy
-    copy: 
-      src: docs/
-      dest: /docs
-  - name: demarrage docker
-    service:
-      name: docker
-      state: started 
-      enabled: yes
+  # - name: install docker  
+  #   apt:
+  #     name:
+  #       - docker  
+  #     update_cache: yes
+  # - name: index copy
+  #   copy: 
+  #     src: docs/
+  #     dest: /docs
+  # - name: demarrage docker
+  #   service:
+  #     name: docker
+  #     state: started 
+  #     enabled: yes
   - name: création image result
     docker_image:
       path: ./docs/result
