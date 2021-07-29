@@ -4,20 +4,15 @@
   tasks:
   - name: install docker  
     apt:
-     name:
-      state: latest
+      name:
+        - docker  
       update_cache: yes
-    loop:
-      - docker-ce
-      - docker-ce-cli
-      - containerd.io
   - name: demarrage docker
     service:
       name: docker
       state: started 
       enabled: yes
-     
-      
+
   - name: index copy
     copy: 
       src: docs/
