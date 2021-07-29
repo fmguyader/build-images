@@ -36,6 +36,6 @@
       tag: worker
       push: yes
   - name: suppression dossier images
-  file: 
-    state: absent
-    path: /docs
+    file: 
+     state: absent
+     path: /docs
