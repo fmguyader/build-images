@@ -48,11 +48,11 @@
   #     name: "docker-ce"
   #     state: latest
   
-  # - name: Run and enable docker
-  #   service:
-  #    name: docker
-  #    state: started
-  #    enabled: true
+  - name: Run and enable docker
+    service:
+     name: docker
+     state: started
+     enabled: true
 
   # - name: index copy
   #   copy: 
@@ -96,7 +96,7 @@
   - name: création image worker
     docker_image:
       name: image_worker
-      build: 
+
         path: docs/worker/
       source: build
       state: present
