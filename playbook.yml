@@ -64,8 +64,8 @@
       name: image_result
       build: 
         path: ./docs/vote
-        source: build
-        state: present
+      source: build
+      state: present
 
     
   - name: création image vote
@@ -73,16 +73,16 @@
       name: image_vote
       build: 
         path: ./docs/vote
-        source: build
-        state: present
+      source: build
+      state: present
 
   - name: création image worker
     docker_image:
       name: image_worker
       build: 
         path: ./docs/worker
-        source: build
-        state: present
+      source: build
+      state: present
 
   - name: suppression dossier images
     file: 
