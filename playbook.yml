@@ -2,82 +2,88 @@
 - hosts: all 
   become: true 
   tasks:
-  - name: Update the apt package index
-    become: yes
-    apt:
-      name: "*"
-      state: latest
-      update_cache: yes
-      force_apt_get: yes
+  # - name: Update the apt package index
+  #   become: yes
+  #   apt:
+  #     name: "*"
+  #     state: latest
+  #     update_cache: yes
+  #     force_apt_get: yes
 
-  - name: Install packages for apt add repository over HTTPS
-    become: yes
-    apt:
-      name: "{{ packagesdep }}"
-      force_apt_get: yes
-      state: latest
-      update_cache: yes
-    vars:
-      packagesdep:
-      - git
-      - apt-transport-https
-      - ca-certificates
-      - wget
-      - software-properties-common
-      - gnupg2
-      - curl
+  # - name: Install packages for apt add repository over HTTPS
+  #   become: yes
+  #   apt:
+  #     name: "{{ packagesdep }}"
+  #     force_apt_get: yes
+  #     state: latest
+  #     update_cache: yes
+  #   vars:
+  #     packagesdep:
+  #     - git
+  #     - apt-transport-https
+  #     - ca-certificates
+  #     - wget
+  #     - software-properties-common
+  #     - gnupg2
+  #     - curl
 
-  - name: Add Apt signing key from official docker repo
-    apt_key:
-      url: https://download.docker.com/linux/debian/gpg
-      state: present
-  - name: add docker official repository for Debian Stretch
-    apt_repository:
-      repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
-      state: present
-  - name: Index new repo into the cache
-    become: yes
-    apt:
-      name: "*"
-      state: latest
-      update_cache: yes
-      force_apt_get: yes
+  # - name: Add Apt signing key from official docker repo
+  #   apt_key:
+  #     url: https://download.docker.com/linux/debian/gpg
+  #     state: present
+  # - name: add docker official repository for Debian Stretch
+  #   apt_repository:
+  #     repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+  #     state: present
+  # - name: Index new repo into the cache
+  #   become: yes
+  #   apt:
+  #     name: "*"
+  #     state: latest
+  #     update_cache: yes
+  #     force_apt_get: yes
 
-  - name: actually install docker
-    apt:
-      name: "docker-ce"
-      state: latest
+  # - name: actually install docker
+  #   apt:
+  #     name: "docker-ce"
+  #     state: latest
   
-  - name: Run and enable docker
-    service:
-     name: docker
-     state: started
-     enabled: true
+  # - name: Run and enable docker
+  #   service:
+  #    name: docker
+  #    state: started
+  #    enabled: true
 
-  - name: index copy
-    copy: 
-      src: docs/
-      dest: /docs
+  # - name: index copy
+  #   copy: 
+  #     src: docs/
+  #     dest: /docs
   
   - name: création image result
     docker_image:
-      path: ./docs/result
-      name: /docs/image_result
-      tag: result
-      push: yes
-  
+      name: image_result
+      build: 
+        path: /docs/vote/
+        source: build
+      state: present
+
+    
   - name: création image vote
     docker_image:
-      path: ./docs/vote
-      name: /docs/image_vote
-      tag: vote
-      push: yes
+      name: image_vote
+      build: 
+        path: /docs/vote/
+        source: build
+      state: present
+
   - name: création image worker
     docker_image:
-      path: ./docs/worker
-      name: /docs/image_worker
-      tag: worker
-      push: yes
+      name: image_worker
+      build: 
+        path: /docs/worker/
+        source: build
+      state: present
+
   - name: suppression dossier images
     file: 
      state: absent
