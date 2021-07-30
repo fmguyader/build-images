@@ -63,16 +63,16 @@
 
   - name: chmod Var
     file:
-      path: docs/vote/Dockerfile
+      path: docs/vote/Dockerfile.yml
       mode: '0777'
       
   - name: chmod Var
     file:
-      path: docs/result/Dockerfile
+      path: docs/result/Dockerfile.yml
       mode: '0777'
   - name: chmod Var
     file:
-      path: docs/worker/Dockerfile
+      path: docs/worker/Dockerfile.yml
       mode: '0777'
 
 # build images
