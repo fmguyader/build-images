@@ -71,24 +71,21 @@
   - name: création image result
     docker_image:
       name: image_result
-      build:
-        path: /home/fm/tp2/result/Dockerfile
+      path: /home/fm/tp2/result/Dockerfile
         
      
       
   - name: création image vote
     docker_image:
       name: image_vote
-      build:
-        path: /home/fm/tp2/vote
+      path: /home/fm/tp2/vote
         
  
 
   - name: création image worker
     docker_image:
       name: image_worker
-      build:
-        path: /home/fm/tp2/worker
+      path: /home/fm/tp2/worker
         
   
     
