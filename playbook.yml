@@ -81,18 +81,18 @@
   #     path: /home/fm/tp2/vote
         
 
-  - name: création image worker
-    command: docker build -t image_worker /home/fm/tp2/worker
+  # - name: création image worker
+  #   command: docker build -t image_worker /home/fm/tp2/worker
   
-  - name: création image vote
-    command: docker build -t image_vote /home/fm/tp2/vote
+  # - name: création image vote
+  #   command: docker build -t image_vote /home/fm/tp2/vote
 
-  - name: création image result
-    command: docker build -t image_result /home/fm/tp2/result
+  # - name: création image result
+  #   command: docker build -t image_result /home/fm/tp2/result
     
 
 
-  # - name: suppression dossier images
-  #   file: 
-  #    state: absent
-  #    path: docs
+  - name: suppression dossier images
+    file: 
+     state: absent
+     path: /home/fm/tp2
