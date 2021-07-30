@@ -59,12 +59,29 @@
   #     src: docs/
   #     dest: /docs
   
+# modification droits
+
+  - name: chmod Var
+    file:
+      path: /docs/vote/Dockerfile
+      mode: '1777'
+      
+  - name: chmod Var
+    file:
+      path: /docs/result/Dockerfile
+      mode: '1777'
+  - name: chmod Var
+    file:
+      path: /docs/worker/Dockerfile
+      mode: '1777'
+  
+# build images
   - name: création image result
     docker_image:
       name: image_result
       build: 
         path: ./docs/vote
-      source: build
+        source: build
       state: present
 
     
