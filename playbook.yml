@@ -61,26 +61,26 @@
   
 # modification droits
 
-  - name: chmod Var
-    file:
-      path: docs/vote/Dockerfile
-      mode: '0777'
+  # - name: chmod Var
+  #   file:
+  #     path: docs/vote/Dockerfile
+  #     mode: '0777'
       
-  - name: chmod Var
-    file:
-      path: docs/result/Dockerfile
-      mode: '0777'
-  - name: chmod Var
-    file:
-      path: docs/worker/Dockerfile
-      mode: '0777'
+  # - name: chmod Var
+  #   file:
+  #     path: docs/result/Dockerfile
+  #     mode: '0777'
+  # - name: chmod Var
+  #   file:
+  #     path: docs/worker/Dockerfile
+  #     mode: '0777'
 
 # build images
   - name: création image result
     docker_image:
       name: image_result
       build: 
-        path: ./docs/vote
+        path: docs/vote
         source: build
       state: present
 
@@ -89,7 +89,7 @@
     docker_image:
       name: image_vote
       build: 
-        path: ./docs/vote
+        path: docs/vote
       source: build
       state: present
 
@@ -97,11 +97,11 @@
     docker_image:
       name: image_worker
       build: 
-        path: ./docs/worker
+        path: docs/worker
       source: build
       state: present
 
   - name: suppression dossier images
     file: 
      state: absent
-     path: /docs
+     path: docs
