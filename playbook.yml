@@ -80,7 +80,7 @@
     docker_image:
       name: image_result
       build: 
-        path: docs/vote
+        path: docs/vote/
         source: build
       state: present
 
@@ -89,7 +89,7 @@
     docker_image:
       name: image_vote
       build: 
-        path: docs/vote
+        path: docs/vote/
       source: build
       state: present
 
@@ -97,7 +97,7 @@
     docker_image:
       name: image_worker
       build: 
-        path: docs/worker
+        path: docs/worker/
       source: build
       state: present
 
