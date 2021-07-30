@@ -55,16 +55,16 @@
   #    enabled: true
 
 
-  - name: create build directory
-    file:
-      path: /home/fm/tp2
-      state: directory
-      mode: '0755'
+  # - name: create build directory
+  #   file:
+  #     path: /home/fm/tp2
+  #     state: directory
+  #     mode: '0755'
 
-  - name: index copy
-    copy: 
-      src: docs/
-      dest: /home/fm/tp2
+  # - name: index copy
+  #   copy: 
+  #     src: docs/
+  #     dest: /home/fm/tp2
   
 
 # build images
@@ -72,7 +72,7 @@
     docker_image:
       name: image_result
       build:
-        path: /home/fm/tp2/docs/result/Dockerfile
+        path: /home/fm/tp2/result/Dockerfile
         source: build
       state: present
       
@@ -80,7 +80,7 @@
     docker_image:
       name: image_vote
       build:
-        path: /home/fm/tp2/docs/vote/Dockerfile
+        path: /home/fm/tp2/vote/Dockerfile
         source: build
       state: present
 
@@ -88,7 +88,7 @@
     docker_image:
       name: image_worker
       build:
-        path: /home/fm/tp2/docs/worker/Dockerfile
+        path: /home/fm/tp2/worker/Dockerfile
         source: build
       state: present
     
