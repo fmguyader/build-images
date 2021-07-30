@@ -9,7 +9,7 @@
       state: latest
       update_cache: yes
       force_apt_get: yes
-    when: ansible_facts['os_user'] == "Debian"
+    when: ansible_facts['os_family'] == "Debian"
   
   - name: Update the apt package index
     become: yes
@@ -18,7 +18,7 @@
       state: latest
       update_cache: yes
       force_apt_get: yes
-    when: ansible_facts['os_user'] == "CentOS"
+    when: ansible_facts['os_family'] == "RedHat"
 
   - name: Install packages for apt add repository over HTTPS
     become: yes
@@ -36,7 +36,7 @@
       - software-properties-common
       - gnupg2
       - curl
-    when: ansible_facts['os_user'] == "Debian"
+    when: ansible_facts['os_family'] == "Debian"
 
   - name: Install packages for apt add repository over HTTPS
     become: yes
@@ -54,31 +54,31 @@
       - software-properties-common
       - gnupg2
       - curl
-    when: ansible_facts['os_user'] == "CentOS"  
+    when: ansible_facts['os_family'] == "RedHat"  
 
   - name: Add Apt signing key from official docker repo
     apt_key:
       url: https://download.docker.com/linux/debian/gpg
       state: present
-    when: ansible_facts['os_user'] == "Debian"
+    when: ansible_facts['os_family'] == "Debian"
     
   - name: Add Apt signing key from official docker repo
     apt_key:
       url: https://download.docker.com/linux/centos/gpg
       state: present
-    when: ansible_facts['os_user'] == "CentOS"
+    when: ansible_facts['os_family'] == "RedHat"
 
   - name: add docker official repository for Debian Stretch
     apt_repository:
       repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
       state: present
-    when: ansible_facts['os_user'] == "Debian"
+    when: ansible_facts['os_family'] == "Debian"
     
   - name: add docker official repository for Debian Stretch
     apt_repository:
       repo: deb [arch=amd64] https://download.docker.com/linux/centos stretch stable
       state: present
-    when: ansible_facts['os_user'] == "CentOS"
+    when: ansible_facts['os_family'] == "RedHat"
 
   - name: Index new repo into the cache
     become: yes
@@ -87,7 +87,7 @@
       state: latest
       update_cache: yes
       force_apt_get: yes
-    when: ansible_facts['os_user'] == "Debian"
+    when: ansible_facts['os_family'] == "Debian"
 
   - name: Index new repo into the cache
     become: yes
@@ -96,19 +96,19 @@
       state: latest
       update_cache: yes
       force_apt_get: yes
-    when: ansible_facts['os_user'] == "CentOS"
+    when: ansible_facts['os_family'] == "RedHat"
 
   - name: actually install docker
     apt:
       name: "docker-ce"
       state: latest
-    when: ansible_facts['os_user'] == "Debian"
+    when: ansible_facts['os_family'] == "Debian"
  
   - name: actually install docker
     yum:
       name: "docker-ce"
       state: latest
-    when: ansible_facts['os_user'] == "CentOS"
+    when: ansible_facts['os_family'] == "RedHat"
 
   - name: Run and enable docker
     service:
