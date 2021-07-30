@@ -73,7 +73,7 @@
       name: image_result
       build:
         path: /home/fm/tp2/result/Dockerfile
-        source: build
+        
      
       
   - name: création image vote
@@ -81,7 +81,7 @@
       name: image_vote
       build:
         path: /home/fm/tp2/vote
-        source: build
+        
  
 
   - name: création image worker
@@ -89,7 +89,7 @@
       name: image_worker
       build:
         path: /home/fm/tp2/worker
-        source: build
+        
   
     
 
