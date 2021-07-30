@@ -61,24 +61,20 @@
   
 # modification droits
 
-  # - name: chmod Var
-  #   file:
-  #     path: /docs/vote/Dockerfile.yml
-  #     mode: '0777'
-      
-  # - name: chmod Var
-  #   file:
-  #     path: /docs/result/Dockerfile.yml
-  #     mode: '0777'
-  # - name: chmod Var
-  #   file:
-  #     path: /docs/worker/Dockerfile.yml
-  #     mode: '0777'
   - name: chmod Var
     file:
-      path: /docs/vote
-      mode: '0755'
-      state: directory
+      path: /docs/vote/Dockerfile
+      mode: '0777'
+      
+  - name: chmod Var
+    file:
+      path: /docs/result/Dockerfile
+      mode: '0777'
+  - name: chmod Var
+    file:
+      path: /docs/worker/Dockerfile
+      mode: '0777'
+
 # build images
   - name: création image result
     docker_image:
