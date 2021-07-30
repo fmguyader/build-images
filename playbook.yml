@@ -57,7 +57,7 @@
   # - name: index copy
   #   copy: 
   #     src: docs/
-  #     dest: /docs
+  #     dest: docs
   
 # modification droits
 
@@ -78,28 +78,31 @@
 # build images
   - name: création image result
     docker_image:
+      nocache: true
+      path: docs/vote/
       name: image_result
-      build: 
-        path: docs/vote
-        source: build
-      state: present
+
+  #     build: 
+  #       path: docs/vote
+  #       source: build
+  #     state: present
 
     
-  - name: création image vote
-    docker_image:
-      name: image_vote
-      build: 
-        path: docs/vote
-      source: build
-      state: present
+  # - name: création image vote
+  #   docker_image:
+  #     name: image_vote
+  #     build: 
+  #       path: docs/vote
+  #     source: build
+  #     state: present
 
-  - name: création image worker
-    docker_image:
-      name: image_worker
-      build: 
-        path: docs/worker
-      source: build
-      state: present
+  # - name: création image worker
+  #   docker_image:
+  #     name: image_worker
+  #     build: 
+  #       path: docs/worker
+  #     source: build
+  #     state: present
 
   - name: suppression dossier images
     file: 
