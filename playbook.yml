@@ -72,7 +72,7 @@
     docker_image:
       name: image_result
       build:
-        path: /home/fm/tp2/result/Dockerfile
+        path: /home/fm/tp2/result
         source: build
       state: present
       
@@ -80,7 +80,7 @@
     docker_image:
       name: image_vote
       build:
-        path: /home/fm/tp2/vote/Dockerfile
+        path: /home/fm/tp2/vote
         source: build
       state: present
 
@@ -88,7 +88,7 @@
     docker_image:
       name: image_worker
       build:
-        path: /home/fm/tp2/worker/Dockerfile
+        path: /home/fm/tp2/worker
         source: build
       state: present
     
